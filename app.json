@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "gabriela-mobile",
+    "slug": "gabriela-mobile",
+    "scheme": "gabriela-mobile",
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
