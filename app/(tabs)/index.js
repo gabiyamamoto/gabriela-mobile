@@ -56,39 +56,45 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    padding: 24,
+    paddingHorizontal: 22,
+    paddingVertical: 24,
     justifyContent: "center",
   },
 
   hero: {
     padding: 24,
     borderRadius: 24,
+    marginBottom: 14,
     backgroundColor: "#fff",
-
   },
 
   badge: {
     alignSelf: "center",
-    backgroundColor: "E3F3F1",
+    backgroundColor: "#E3F3F1",
     borderRadius: 20,
-    padding: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    marginBottom: 16,
   },
 
   badgeTexto: {
     fontSize: 11,
     fontWeight: "700",
-    color: "|#579E98",
+    color: "#579E98",
   },
 
-  heroTituto: {
+  heroTitulo: {
     fontSize: 23,
+    lineHeight: 29,
     fontWeight: "800",
     color: "#1D2B2A",
+    marginBottom: 10,
   },
 
   heroSubtitulo: {
     fontSize: 13,
     color: "#758482",
+    lineHeight: 20,
   },
 
   botao: {
@@ -97,6 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#65B9B1",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 16,
   },
 
   botaoTexto: {
@@ -109,5 +116,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 11,
     color: "#9AABAA",
+    marginTop: 24,
   },
 });

@@ -41,19 +41,23 @@ const styles = StyleSheet.create({
     eyebrow: {
         fontSize: 11,
         fontWeight: "700",
+        letterSpacing: 1.5,
+        textTransform: "uppercase",
         color: "#65B9B1",
         marginBottom: 8,
     },
 
     title: {
         fontSize: 32,
+        lineHeight: 38,
         fontWeight: "800",
         color: "#1C2B2A"
     },
 
     description: {
-        marginop: 9,
-        fontSize: 154,
+        marginTop: 9,
+        fontSize: 14,
+        lineHeight: 21,
         color: "#71817F"
     },
 
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         shadowColor: "#64817e",
-
+        
     },
 
     logo: {
