@@ -5,6 +5,7 @@ import Header from "../components/header";
 import Card from "../components/card";
 
 const gabiLogo = require("../../assets/gabi-logo.png");
+const anoAtual = new Date().getFullYear();
 
 export default function HomeScreen() {
   return (
@@ -23,16 +24,16 @@ export default function HomeScreen() {
             <Text style={styles.badgeTexto}>Desenvolvedora em formação</Text>
           </View>
 
-          <Text style={styles.heroTituto}>Criando experiencias digitais com codigo de verdade</Text>
+          <Text style={styles.heroTitulo}>Criando experiencias digitais com codigo de verdade</Text>
 
           <Text style={styles.heroSubtitulo}>
             Esse app reune um pouco sobre mim e os projetos que estou desenvolvendo
           </Text>
-        </ View>
+        </View>
 
         <Card
           icon=""
-          title="Teecnologia + criatividade"
+          title="Tecnologia + criatividade"
           description="Desenvolvimento de aplicações, interfaces e experiencias digitais"
         />
 
@@ -42,7 +43,7 @@ export default function HomeScreen() {
           </Pressable>
         </Link>
 
-        <Text style={styles.footer}>Gabi Yamamoto - 2026 </Text>
+        <Text style={styles.footer}>Gabi Yamamoto - {anoAtual} </Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -51,13 +52,12 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#f8fbff",
+    backgroundColor: "#fff",
   },
 
   container: {
-    flex: 1,
-    paddingHorizontal: 22,
-    paddingVertical: 24,
+    padding: 24,
+    gap: 20,
     justifyContent: "center",
   },
 
@@ -66,10 +66,20 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     marginBottom: 14,
     backgroundColor: "#fff",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 
   badge: {
-    alignSelf: "center",
+    alignSelf: "flex-start",
     backgroundColor: "#E3F3F1",
     borderRadius: 20,
     paddingHorizontal: 12,
@@ -104,6 +114,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 16,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 
   botaoTexto: {

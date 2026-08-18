@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 
-export default function Header({eyebrow, title, description, logo}) {
+export default function Header({ eyebrow, title, description, logo }) {
     return (
         <View style={styles.container}>
             <View style={styles.containerTexto}>
@@ -8,16 +8,16 @@ export default function Header({eyebrow, title, description, logo}) {
                 <Text style={styles.titulo}>
                     {title}
                 </Text>
-                <Text style={styles.description}>{description}</Text>
+                <Text style={styles.descricao}>{description}</Text>
             </View>
 
             {logo && (
                 <View style={styles.logoContainer}
                 >
                     <Image
-                    source={logo}
-                    style={styles.logo}
-                    resizeMode="contain"
+                        source={logo}
+                        style={styles.logo}
+                        resizeMode="contain"
                     />
                 </View>
             )}
@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
         marginBottom: 28,
     },
 
-    content: {
+    containerTexto: {
         flex: 1,
-        paddingRight: 15,
+        paddingRight: 10,
     },
 
     eyebrow: {
@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
 
-    title: {
-        fontSize: 32,
+    titulo: {
+        fontSize: 22,
         lineHeight: 38,
         fontWeight: "800",
         color: "#1C2B2A"
     },
 
-    description: {
+    descricao: {
         marginTop: 9,
         fontSize: 14,
         lineHeight: 21,
@@ -62,14 +62,14 @@ const styles = StyleSheet.create({
     },
 
     logoContainer: {
-        width: 52,
-        height: 52,
+        width: 46,
+        height: 46,
         borderRadius: 18,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
         shadowColor: "#64817e",
-        
+
     },
 
     logo: {
