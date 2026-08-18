@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
 
   hero: {
     padding: 24,
+    gap: 10,
     borderRadius: 24,
-    marginBottom: 14,
     backgroundColor: "#fff",
 
     shadowColor: "#000",
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 12,
     paddingVertical: 7,
-    marginBottom: 16,
   },
 
   badgeTexto: {
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
     lineHeight: 29,
     fontWeight: "800",
     color: "#1D2B2A",
-    marginBottom: 10,
   },
 
   heroSubtitulo: {
@@ -108,12 +106,13 @@ const styles = StyleSheet.create({
   },
 
   botao: {
-    height: 52,
+    alignSelf: "center",
     borderRadius: 18,
     backgroundColor: "#65B9B1",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 16,
 
     shadowColor: "#000",
     shadowOffset: {
@@ -136,6 +135,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 11,
     color: "#9AABAA",
-    marginTop: 24,
   },
 });
