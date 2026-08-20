@@ -28,14 +28,14 @@ export default function Header({ eyebrow, title, description, logo }) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
-        justifyContent: "space-between",
         alignItems: "flex-start",
-        marginBottom: 28,
+        padding: 5,
     },
 
     containerTexto: {
         flex: 1,
-        paddingRight: 10,
+        gap: 8,
+        marginRight: 12,
     },
 
     eyebrow: {
@@ -44,18 +44,16 @@ const styles = StyleSheet.create({
         letterSpacing: 1.5,
         textTransform: "uppercase",
         color: "#65B9B1",
-        marginBottom: 8,
     },
 
     titulo: {
         fontSize: 22,
-        lineHeight: 38,
+        lineHeight: 28,
         fontWeight: "800",
         color: "#1C2B2A"
     },
 
     descricao: {
-        marginTop: 9,
         fontSize: 14,
         lineHeight: 21,
         color: "#71817F"
@@ -68,8 +66,15 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
-        shadowColor: "#64817e",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
 
+        elevation: 2,
     },
 
     logo: {

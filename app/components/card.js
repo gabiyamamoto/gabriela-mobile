@@ -1,24 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Card({
-  title,
-  description,
-  icon,
-  variant = "white",
-}) {
+export default function Card({ title, description, icon, variant = "white" }) {
   return (
     <View style={[styles.card, styles[variant]]}>
       {icon && (
         <View style={styles.iconContainer}>
-          <Text style={styles.icon}>{icon}</Text>
+          <Text style={styles.icon}>
+            {icon}
+          </Text>
         </View>
       )}
 
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.titulo}>
+        {title}
+      </Text>
 
-      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.descricao}>
+        {title}
+      </Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -28,16 +29,17 @@ const styles = StyleSheet.create({
   },
 
   white: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#fff",
 
-    shadowColor: "#64817E",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 1,
     },
-    shadowOpacity: 0.06,
-    shadowRadius: 14,
-    elevation: 3,
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 
   green: {
@@ -51,27 +53,35 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 42,
     height: 42,
-    borderRadius: 14,
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: 18,
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 14,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 
   icon: {
-    fontSize: 19,
+    fontSize: 20,
   },
 
-  title: {
+  titulo: {
     fontSize: 17,
     fontWeight: "700",
     color: "#253332",
     marginBottom: 6,
   },
 
-  description: {
+  descricao: {
     fontSize: 13,
     lineHeight: 19,
-    color: "#71817F",
+    color: "#758482",
   },
-});
+})
