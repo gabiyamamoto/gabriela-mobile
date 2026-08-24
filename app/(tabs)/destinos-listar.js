@@ -41,7 +41,7 @@ export default function DestinosListarScreen() {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.conteudo}>
         <View style={styles.header}>
-          <Text style={styles.tituloPagina}>Listar heróis</Text>
+          <Text style={styles.tituloPagina}>Listar destinos</Text>
           <Text style={styles.subtitulo}>GET /api/destinos</Text>
         </View>
 
