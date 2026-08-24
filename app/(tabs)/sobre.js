@@ -61,10 +61,11 @@ export default function SobreScreen() {
                     <Text style={styles.tituloSecao}>
                         Vamos conversar?
                     </Text>
-
-                    <Pressable style={styles.botaoPrincipal}>
-                        <Text style={styles.botaoTextoPrincipal}>Ver meus projetos ➡️</Text>
-                    </Pressable>
+                    <Link href="/destinos-listar" asChild>
+                        <Pressable style={styles.botaoPrincipal}>
+                            <Text style={styles.botaoTextoPrincipal}>Ver meus projetos ➡️</Text>
+                        </Pressable>
+                    </Link>
 
                     <Pressable style={styles.botaoSecundario}>
                         <Text style={styles.botaoTextoSecundario}>Entre em contato</Text>

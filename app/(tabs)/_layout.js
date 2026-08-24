@@ -1,11 +1,13 @@
-import { Tabs } from "expo-router";
+import { Tabs } from "expo-router"; import { Ionicons } from "@expo/vector-icons";
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#0f62fe",
+        tabBarActiveTintColor: "#65B9B1",
+        tabBarInactiveTintColor: "#9AABAA",
+
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
@@ -17,27 +19,54 @@ export default function TabsLayout() {
         options={{
           title: "Início",
           headerTitle: "Início",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="sobre"
         options={{
           title: "Sobre",
           headerTitle: "Sobre",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="person-outline"
+              size={size}
+              color={color}
+            />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="destinos-listar"
         options={{
           title: "GET",
           headerTitle: "Conteúdo - Get",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="list-outline"
+              size={size}
+              color={color}
+            />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="destinos-criar"
         options={{
           title: "POST",
           headerTitle: "Conteúdo - Post",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="add-circle-outline"
+              size={size}
+              color={color}
+            />
+          ),
         }}
       />
     </Tabs>
