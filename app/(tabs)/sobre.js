@@ -65,7 +65,7 @@ export default function SobreScreen() {
                     <Pressable style={styles.botaoPrincipal}>
                         <Text style={styles.botaoTextoPrincipal}>Ver meus projetos ➡️</Text>
                     </Pressable>
-                    
+
                     <Pressable style={styles.botaoSecundario}>
                         <Text style={styles.botaoTextoSecundario}>Entre em contato</Text>
                     </Pressable>
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-    hero: {
+    cardPerfil: {
+        alignItems: "center",
         padding: 24,
         gap: 10,
         borderRadius: 24,
@@ -106,41 +107,37 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    badge: {
-        alignSelf: "flex-start",
-        backgroundColor: "#E3F3F1",
-        borderRadius: 20,
-        paddingHorizontal: 12,
-        paddingVertical: 7,
+    imagemPerfil: {
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        borderWidth: 2,
+        borderColor: "#65B9B1",
     },
 
-    badgeTexto: {
-        fontSize: 11,
-        fontWeight: "700",
-        color: "#579E98",
-    },
-
-    heroTitulo: {
-        fontSize: 23,
-        lineHeight: 29,
-        fontWeight: "800",
-        color: "#1D2B2A",
-    },
-
-    heroSubtitulo: {
-        fontSize: 13,
-        color: "#758482",
-        lineHeight: 20,
-    },
-
-    botao: {
-        alignSelf: "center",
-        borderRadius: 18,
-        backgroundColor: "#65B9B1",
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+    infoPerfil: {
         alignItems: "center",
-        justifyContent: "center",
+    },
+
+    nome: {
+        fontSize: 20,
+        fontWeight: "800",
+        color: "#579E98",
+        textAlign: "center",
+    },
+
+    papel: {
+        fontSize: 13,
+        fontWeight: "400",
+        color: "#1D2B2A",
+        textAlign: "center",
+    },
+
+    secaoSobre: {
+        backgroundColor: "#E3F3F1",
+        padding: 24,
+        gap: 10,
+        borderRadius: 24,
 
         shadowColor: "#000",
         shadowOffset: {
@@ -153,10 +150,73 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    botaoTexto: {
+    tituloSecao: {
+        fontSize: 18,
+        fontWeight: "700",
+        color: "#579E98",
+    },
+
+    textoSecao: {
+        fontSize: 14,
+        fontWeight: "400",
+        color: "#758482",
+    },
+
+
+    cardsSecao: {
+        gap: 10,
+    },
+
+    secaoBotoes: {
+        alignItems: "center",
+        backgroundColor: "#E3F3F1",
+        padding: 24,
+        gap: 10,
+        borderRadius: 24,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+    },
+
+    botaoPrincipal: {
+        backgroundColor: "#65B9B1",
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 18,
+    },
+
+    botaoTextoPrincipal: {
         fontSize: 14,
         fontWeight: "700",
         color: "#fff",
+    },
+
+    botaoSecundario: {
+        backgroundColor: "#fff",
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 18,
+        borderWidth: 2,
+        borderColor: "#65B9B1",
+    },
+
+    botaoTextoSecundario: {
+        fontSize: 14,
+        fontWeight: "700",
+        color: "#65B9B1",
+    },
+
+    botaoTextoSecundario: {
+        fontSize: 14,
+        fontWeight: "700",
+        color: "#65B9B1",
     },
 
     footer: {

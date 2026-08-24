@@ -27,17 +27,17 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="aulas"
+        name="post"
         options={{
-          title: "Aulas",
-          headerTitle: "Conteúdo",
+          title: "Post",
+          headerTitle: "Conteúdo - Post",
         }}
       />
       <Tabs.Screen
-        name="interface"
+        name="api"
         options={{
-          title: "Interface",
-          headerTitle: "Interface",
+          title: "Api",
+          headerTitle: "Conteúdo - API",
         }}
       />
     </Tabs>
