@@ -34,10 +34,10 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="api"
+        name="destinos-listar"
         options={{
-          title: "Api",
-          headerTitle: "Conteúdo - API",
+          title: "Destinos",
+          headerTitle: "Conteúdo - Get",
         }}
       />
     </Tabs>
