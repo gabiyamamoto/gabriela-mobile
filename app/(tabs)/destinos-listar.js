@@ -61,7 +61,15 @@ export default function DestinosListarScreen() {
 
                 <Text style={styles.descricao}>{destino.description}</Text>
                 <Text style={styles.detalhes}>
-                  {destino.pais} · {destino.clima} · {destino.tipo}
+                  {destino.pais} · {destino.tipo_destino}
+                </Text>
+
+                <Text style={styles.detalhes}>
+                  Melhor época: {destino.melhor_epoca}
+                </Text>
+
+                <Text style={styles.detalhesDestacado}>
+                  Custo médio: {destino.custo_medio}
                 </Text>
 
                 <Text style={styles.status}>{destino.status}</Text>
@@ -149,5 +157,12 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#2596be",
     marginTop: 6,
+  },
+
+  detalhesDestacado: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#579E98",
+    marginTop: 8,
   },
 });

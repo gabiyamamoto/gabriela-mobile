@@ -22,12 +22,11 @@ const api = axios.create({
 
 export default function DestinosCriarScreen() {
   const [titulo, setTitulo] = useState("");
-  const [descricao, setDescricao] = useState("");
   const [imagemUrl, setImagemUrl] = useState("");
   const [pais, setPais] = useState("");
-  const [clima, setClima] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [status, setStatus] = useState("");
+  const [tipoDestino, setTipoDestino] = useState("");
+  const [melhorEpoca, setMelhorEpoca] = useState("");
+  const [custoMedio, setCustoMedio] = useState("");
 
   const [enviando, setEnviando] = useState(false);
 
@@ -37,7 +36,7 @@ export default function DestinosCriarScreen() {
       return;
     }
 
-    if (!pais || !clima || !tipo || !status) {
+    if (!pais || !tipoDestino || !melhorEpoca || !custoMedio) {
       Alert.alert(
         "Atenção",
         "Preencha todos os campos específicos do destino."
@@ -45,27 +44,33 @@ export default function DestinosCriarScreen() {
       return;
     }
 
+    const custoMedioNumero = Number(custoMedio.replace(",", "."));
+
+    if (isNaN(custoMedioNumero)) {
+      Alert.alert(
+        "Atenção", "O custo médio deve ser um número válido. Use apenas números e, se necessário, um ponto ou vírgula para separar decimais.");
+      return;
+    }
+
     setEnviando(true);
 
     try {
-      const resposta = await api.post("/api/herois", {
+      const resposta = await api.post("/api/destinos", {
         title: titulo,
-        description: descricao,
-        imageUrl: imagemUrl,
+        imageUrl: imagemUrl || null,
         pais,
-        clima,
-        tipo,
-        status,
+        tipo_destino: tipoDestino,
+        melhor_epoca: melhorEpoca,
+        custo_medio: custoMedio,
       });
 
       Alert.alert("Destino criado!", resposta.data.title);
       setTitulo("");
-      setDescricao("");
       setImagemUrl("");
       setPais("");
-      setClima("");
-      setTipo("");
-      setStatus("");
+      setTipoDestino("");
+      setMelhorEpoca("");
+      setCustoMedio("");
     } catch (e) {
       Alert.alert(
         "Não deu pra criar o destino",
@@ -76,7 +81,7 @@ export default function DestinosCriarScreen() {
     }
   }
 
-    return (
+  return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -102,17 +107,6 @@ export default function DestinosCriarScreen() {
           placeholderTextColor="#9AABAA"
         />
 
-        <Text style={styles.rotulo}>Descrição</Text>
-
-        <TextInput
-          style={[styles.campo, styles.campoDescricao]}
-          value={descricao}
-          onChangeText={setDescricao}
-          placeholder="Ex: Tokyo em uma versão simplificada."
-          placeholderTextColor="#9AABAA"
-          multiline
-        />
-
         <Text style={styles.rotulo}>URL da imagem</Text>
 
         <TextInput
@@ -134,17 +128,7 @@ export default function DestinosCriarScreen() {
           placeholderTextColor="#9AABAA"
         />
 
-        <Text style={styles.rotulo}>Clima</Text>
-
-        <TextInput
-          style={styles.campo}
-          value={clima}
-          onChangeText={setClima}
-          placeholder="Ex: Temperado"
-          placeholderTextColor="#9AABAA"
-        />
-
-        <Text style={styles.rotulo}>Tipo</Text>
+        <Text style={styles.rotulo}>Tipo de destino</Text>
 
         <View style={styles.opcoes}>
           {["Cidade", "Montanha", "Natureza", "Praia"].map(
@@ -153,15 +137,15 @@ export default function DestinosCriarScreen() {
                 key={opcao}
                 style={[
                   styles.opcao,
-                  tipo === opcao && styles.opcaoSelecionada,
+                  tipoDestino === opcao && styles.opcaoSelecionada,
                 ]}
-                onPress={() => setTipo(opcao)}
+                onPress={() => setTipoDestino(opcao)}
               >
                 <Text
                   style={[
                     styles.opcaoTexto,
-                    tipo === opcao &&
-                      styles.opcaoTextoSelecionada,
+                    tipoDestino === opcao &&
+                    styles.opcaoTextoSelecionada,
                   ]}
                 >
                   {opcao}
@@ -171,33 +155,28 @@ export default function DestinosCriarScreen() {
           )}
         </View>
 
-        <Text style={styles.rotulo}>Status</Text>
 
-        <View style={styles.opcoes}>
-          {["Classico", "Em alta", "Premium"].map(
-            (opcao) => (
-              <Pressable
-                key={opcao}
-                style={[
-                  styles.opcao,
-                  status === opcao &&
-                    styles.opcaoSelecionada,
-                ]}
-                onPress={() => setStatus(opcao)}
-              >
-                <Text
-                  style={[
-                    styles.opcaoTexto,
-                    status === opcao &&
-                      styles.opcaoTextoSelecionada,
-                  ]}
-                >
-                  {opcao}
-                </Text>
-              </Pressable>
-            )
-          )}
-        </View>
+        <Text style={styles.rotulo}>Melhor época</Text>
+
+        <TextInput
+          style={styles.campo}
+          value={melhorEpoca}
+          onChangeText={setMelhorEpoca}
+          placeholder="Ex: Verão"
+          placeholderTextColor="#9AABAA"
+        />
+
+
+        <Text style={styles.rotulo}>Custo médio</Text>
+
+        <TextInput
+          style={styles.campo}
+          value={custoMedio}
+          onChangeText={setCustoMedio}
+          placeholder="Ex: 8000"
+          placeholderTextColor="#9AABAA"
+          keyboardType="numeric"
+        />
 
         <Pressable
           style={styles.botao}
