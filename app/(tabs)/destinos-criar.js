@@ -31,16 +31,38 @@ export default function DestinosCriarScreen() {
   const [enviando, setEnviando] = useState(false);
 
   async function criarDestino() {
-    if (!titulo) {
-      Alert.alert("Preencha pelo menos o título.");
+    const tituloAparado = titulo.trim();
+
+    if (tituloAparado.length < 3 || tituloAparado.length > 120) {
+      Alert.alert("Atenção", "O título deve ter entre 3 e 120 caracteres.");
       return;
     }
 
-    if (!pais || !tipoDestino || !melhorEpoca || !custoMedio) {
+    if (!pais.trim() || !tipoDestino.trim() || !melhorEpoca.trim()) {
       Alert.alert(
         "Atenção",
         "Preencha todos os campos específicos do destino."
       );
+      return;
+    }
+
+    const imagemUrlAparada = imagemUrl.trim();
+
+    if (imagemUrlAparada) {
+      try {
+        new URL (imagemUrlAparada);
+      } catch {
+        Alert.alert(
+          "Atenção",
+          "A URL da imagem não é válida."
+        );
+        return;
+      }
+    }
+
+    if (!custoMedio.trim()) {
+      Alert.alert(
+        "Atenção", "O custo médio é obrigatório.");
       return;
     }
 
@@ -56,12 +78,12 @@ export default function DestinosCriarScreen() {
 
     try {
       const resposta = await api.post("/api/destinos", {
-        title: titulo,
-        imageUrl: imagemUrl || null,
-        pais,
-        tipo_destino: tipoDestino,
-        melhor_epoca: melhorEpoca,
-        custo_medio: custoMedio,
+        title: tituloAparado,
+        imageUrl: imagemUrlAparada || null,
+        pais: pais.trim(),
+        tipo_destino: tipoDestino.trim(),
+        melhor_epoca: melhorEpoca.trim(),
+        custo_medio: custoMedioNumero,
       });
 
       Alert.alert("Destino criado!", resposta.data.title);
