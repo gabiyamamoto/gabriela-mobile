@@ -9,7 +9,7 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: "#9AABAA",
 
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: "600",
         },
       }}
@@ -63,6 +63,21 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="add-circle-outline"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="destinos-deletar"
+        options={{
+          title: "DELETE",
+          headerTitle: "Conteúdo - Delete",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="trash-outline"
               size={size}
               color={color}
             />
