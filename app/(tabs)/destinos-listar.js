@@ -24,7 +24,7 @@ export default function DestinosListarScreen() {
       const resposta = await api.get("/api/destinos", {
         params: { limit: 50 }
       });
-      
+
       setDestinos(resposta.data.data);
     } catch (error) {
       setErro("Não foi possivel carregar destinos");
@@ -59,7 +59,6 @@ export default function DestinosListarScreen() {
               <View style={styles.info}>
                 <Text style={styles.titulo}>{destino.title}</Text>
 
-                <Text style={styles.descricao}>{destino.description}</Text>
                 <Text style={styles.detalhes}>
                   {destino.pais} · {destino.tipo_destino}
                 </Text>
@@ -71,8 +70,6 @@ export default function DestinosListarScreen() {
                 <Text style={styles.detalhesDestacado}>
                   Custo médio: {destino.custo_medio}
                 </Text>
-
-                <Text style={styles.status}>{destino.status}</Text>
               </View>
             </View>
           ))}
@@ -115,11 +112,21 @@ const styles = StyleSheet.create({
 
   card: {
     flexDirection: "row",
-    gap: 12,
-    marginTop: 12,
+    padding: 8,
+    marginVertical: 8,
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 24,
     overflow: "hidden",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 
   imagem: {
@@ -130,39 +137,24 @@ const styles = StyleSheet.create({
   info: {
     flex: 1,
     justifyContent: "center",
-    paddingVertical: 12,
-    paddingRight: 12,
+    padding: 8,
+    gap: 6,
   },
 
   titulo: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "700",
     color: "#102542",
   },
 
-  descricao: {
-    fontSize: 13,
-    color: "#64748b",
-    marginTop: 4,
-  },
-
   detalhes: {
-    fontSize: 13,
+    fontSize: 14,
     color: "#64748b",
-    marginTop: 8,
-  },
-
-  status: {
-    fontSize: 12,
-    fontWeight: "700",
-    color: "#2596be",
-    marginTop: 6,
   },
 
   detalhesDestacado: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "700",
     color: "#579E98",
-    marginTop: 8,
   },
 });

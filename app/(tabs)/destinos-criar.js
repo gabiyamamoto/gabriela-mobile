@@ -242,16 +242,16 @@ const styles = StyleSheet.create({
   },
 
   rotulo: {
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: "600",
     color: "#1D2B2A",
-    marginBottom: 4,
+    marginVertical: 8,
   },
 
   campo: {
     borderWidth: 1,
     borderColor: "#DDE8E6",
-    borderRadius: 10,
+    borderRadius: 15,
     paddingHorizontal: 12,
     paddingVertical: 10,
     marginBottom: 12,
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
   },
 
   opcaoTexto: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "600",
     color: "#758482",
   },

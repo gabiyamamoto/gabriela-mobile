@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
         color: "#758482",
     },
 
-
     cardsSecao: {
         gap: 10,
     },
