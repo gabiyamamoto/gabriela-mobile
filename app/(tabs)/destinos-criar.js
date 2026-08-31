@@ -10,8 +10,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
+import Header from "../components/header";
 
-const API_KEY = "cv_GA3uDkB8t-EaguWxGHtrlVO7Q2j64GijQ6emkIYRA7Vtm0a3S950xbifuBsVDuqH";
+const API_KEY = "cv_bYHRA8sur-kBSNVqjjp7vKaFpAZe6T9q1VU5giN8AMZ9HzLAr6-JtmvsnNN44qto";
 
 const api = axios.create({
   baseURL: "https://api-ds.codeverse.dev.br",
@@ -50,7 +51,7 @@ export default function DestinosCriarScreen() {
 
     if (imagemUrlAparada) {
       try {
-        new URL (imagemUrlAparada);
+        new URL(imagemUrlAparada);
       } catch {
         Alert.alert(
           "Atenção",
@@ -109,106 +110,102 @@ export default function DestinosCriarScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.conteudo}
       >
-        <View style={styles.header}>
-          <Text style={styles.tituloPagina}>
-            Criar destino
-          </Text>
+        <Header eyebrow="verbo post - api"
+          title="Criar um novo destino ✍🏼"
+          description="Cadastrando um novo destino através de uma requisição POST" />
 
-          <Text style={styles.subtitulo}>
-            POST /api/destinos
-          </Text>
-        </View>
+        <View style={styles.main}>
+          <Text style={styles.rotulo}>Título</Text>
 
-        <Text style={styles.rotulo}>Título</Text>
+          <TextInput
+            style={styles.campo}
+            value={titulo}
+            onChangeText={setTitulo}
+            placeholder="Ex: Tokyo"
+            placeholderTextColor="#9AABAA"
+          />
 
-        <TextInput
-          style={styles.campo}
-          value={titulo}
-          onChangeText={setTitulo}
-          placeholder="Ex: Tokyo"
-          placeholderTextColor="#9AABAA"
-        />
+          <Text style={styles.rotulo}>URL da imagem</Text>
 
-        <Text style={styles.rotulo}>URL da imagem</Text>
+          <TextInput
+            style={styles.campo}
+            value={imagemUrl}
+            onChangeText={setImagemUrl}
+            placeholder="Ex: https://exemplo.com/imagem.jpg"
+            placeholderTextColor="#9AABAA"
+            autoCapitalize="none"
+          />
 
-        <TextInput
-          style={styles.campo}
-          value={imagemUrl}
-          onChangeText={setImagemUrl}
-          placeholder="Ex: https://exemplo.com/imagem.jpg"
-          placeholderTextColor="#9AABAA"
-          autoCapitalize="none"
-        />
+          <Text style={styles.rotulo}>País</Text>
 
-        <Text style={styles.rotulo}>País</Text>
+          <TextInput
+            style={styles.campo}
+            value={pais}
+            onChangeText={setPais}
+            placeholder="Ex: Japão"
+            placeholderTextColor="#9AABAA"
+          />
 
-        <TextInput
-          style={styles.campo}
-          value={pais}
-          onChangeText={setPais}
-          placeholder="Ex: Japão"
-          placeholderTextColor="#9AABAA"
-        />
+          <Text style={styles.rotulo}>Tipo de destino</Text>
 
-        <Text style={styles.rotulo}>Tipo de destino</Text>
-
-        <View style={styles.opcoes}>
-          {["Cidade", "Montanha", "Natureza", "Praia"].map(
-            (opcao) => (
-              <Pressable
-                key={opcao}
-                style={[
-                  styles.opcao,
-                  tipoDestino === opcao && styles.opcaoSelecionada,
-                ]}
-                onPress={() => setTipoDestino(opcao)}
-              >
-                <Text
+          <View style={styles.opcoes}>
+            {["Cidade", "Montanha", "Natureza", "Praia"].map(
+              (opcao) => (
+                <Pressable
+                  key={opcao}
                   style={[
-                    styles.opcaoTexto,
-                    tipoDestino === opcao &&
-                    styles.opcaoTextoSelecionada,
+                    styles.opcao,
+                    tipoDestino === opcao && styles.opcaoSelecionada,
                   ]}
+                  onPress={() => setTipoDestino(opcao)}
                 >
-                  {opcao}
-                </Text>
-              </Pressable>
-            )
-          )}
+                  <Text
+                    style={[
+                      styles.opcaoTexto,
+                      tipoDestino === opcao &&
+                      styles.opcaoTextoSelecionada,
+                    ]}
+                  >
+                    {opcao}
+                  </Text>
+                </Pressable>
+              )
+            )}
+          </View>
+
+
+          <Text style={styles.rotulo}>Melhor época</Text>
+
+          <TextInput
+            style={styles.campo}
+            value={melhorEpoca}
+            onChangeText={setMelhorEpoca}
+            placeholder="Ex: Verão"
+            placeholderTextColor="#9AABAA"
+          />
+
+
+          <Text style={styles.rotulo}>Custo médio</Text>
+
+          <TextInput
+            style={styles.campo}
+            value={custoMedio}
+            onChangeText={setCustoMedio}
+            placeholder="Ex: 8000"
+            placeholderTextColor="#9AABAA"
+            keyboardType="numeric"
+          />
+
+          <Pressable
+            style={styles.botao}
+            onPress={criarDestino}
+            disabled={enviando}
+          >
+            <Text style={styles.botaoTexto}>
+              {enviando ? "Enviando..." : "Criar destino"}
+            </Text>
+          </Pressable>
         </View>
-
-
-        <Text style={styles.rotulo}>Melhor época</Text>
-
-        <TextInput
-          style={styles.campo}
-          value={melhorEpoca}
-          onChangeText={setMelhorEpoca}
-          placeholder="Ex: Verão"
-          placeholderTextColor="#9AABAA"
-        />
-
-
-        <Text style={styles.rotulo}>Custo médio</Text>
-
-        <TextInput
-          style={styles.campo}
-          value={custoMedio}
-          onChangeText={setCustoMedio}
-          placeholder="Ex: 8000"
-          placeholderTextColor="#9AABAA"
-          keyboardType="numeric"
-        />
-
-        <Pressable
-          style={styles.botao}
-          onPress={criarDestino}
-          disabled={enviando}
-        >
-          <Text style={styles.botaoTexto}>
-            {enviando ? "Enviando..." : "Criar destino"}
-          </Text>
-        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
@@ -225,20 +222,8 @@ const styles = StyleSheet.create({
     paddingBottom: 48,
   },
 
-  header: {
-    marginBottom: 16,
-  },
-
-  tituloPagina: {
-    fontSize: 24,
-    fontWeight: "800",
-    color: "#1D2B2A",
-  },
-
-  subtitulo: {
-    fontSize: 14,
-    color: "#758482",
-    marginTop: 2,
+  main: {
+    padding: 5,
   },
 
   rotulo: {
@@ -286,7 +271,7 @@ const styles = StyleSheet.create({
   },
 
   opcaoTexto: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600",
     color: "#758482",
   },

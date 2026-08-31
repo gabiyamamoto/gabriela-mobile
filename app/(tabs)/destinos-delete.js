@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react"
-import { View, Text, Image, ActivityIndicator, ScrollView, StyleSheet } from "react-native"
+import { View, Text, Image, ActivityIndicator, ScrollView, StyleSheet, Pressable, Alert } from "react-native"
 import axios from "axios" // lib usada pra fazer chamadas HTTP para API
 import { SafeAreaView } from "react-native-safe-area-context" // evita que conteudo fique embaixo do notch/barra do celular
 import Header from "../components/header";
@@ -9,14 +9,15 @@ const API_KEY = "cv_bYHRA8sur-kBSNVqjjp7vKaFpAZe6T9q1VU5giN8AMZ9HzLAr6-JtmvsnNN4
 const api = axios.create({
   baseURL: "https://api-ds.codeverse.dev.br",
   headers: {
-    "x-api-key": API_KEY // passo pelo header a key da API
+    "x-api-key": API_KEY,
   }
 })
 
-export default function DestinosListarScreen() {
+export default function DestinosExcluirScreen() {
   const [destinos, setDestinos] = useState([])
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
+  const [excluindoId, setExcluindoId] = useState(null);
 
   async function buscarDestinos() {
     setCarregando(true)
@@ -38,12 +39,46 @@ export default function DestinosListarScreen() {
     buscarDestinos()
   }, [])
 
+  function confirmarExclusao(destino) {
+    Alert.alert(
+      "Excluir herói",
+      `Tem certeza que quer excluir "${destino.title}"? Essa ação não pode ser desfeita.`,
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Excluir",
+          style: "destructive",
+          onPress: () => excluirDestino(destino.id),
+        },
+      ]
+    );
+  }
+
+  async function excluirDestino(id) {
+    setExcluindoId(id);
+    try {
+      // DELETE não manda corpo — só o id na URL, identificando o que apagar.
+      await api.delete(`/api/destinos/${id}`);
+
+      // Em vez de buscar a lista de novo na API, só tiramos o item
+      // apagado do estado local — a tela atualiza na hora.
+      setDestinos((atual) => atual.filter((item) => item.id !== id));
+    } catch (e) {
+      Alert.alert(
+        "Não deu pra excluir o destino",
+        "A API respondeu com erro. Tenta de novo em instantes."
+      );
+    } finally {
+      setExcluindoId(null);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.conteudo}>
-        <Header eyebrow="verbo get - api"
-          title="Listagem de destinos 🔍"
-          description="Buscando e exibindo destinos através de uma requisição GET" />
+        <Header eyebrow="verbo delete - api"
+          title="Excluir destino 🗑️"
+          description="Removendo um destino através de uma requisição DELETE" />
 
         <View style={styles.main}>
 
@@ -56,20 +91,22 @@ export default function DestinosListarScreen() {
               <View key={destino.id} style={styles.card}>
                 <Image source={{ uri: destino.imageUrl }} style={styles.imagem} />
 
-                <View style={styles.info}>
-                  <Text style={styles.titulo}>{destino.title}</Text>
+                <View style={styles.containerInfo}>
 
-                  <Text style={styles.detalhes}>
-                    {destino.pais} · {destino.tipo_destino}
-                  </Text>
+                  <View style={styles.info}>
+                    <Text style={styles.titulo}>{destino.title}</Text>
 
-                  <Text style={styles.detalhes}>
-                    Melhor época: {destino.melhor_epoca}
-                  </Text>
+                    <Text style={styles.detalhes}>
+                      {destino.pais} · {destino.tipo_destino}
+                    </Text>
+                  </View>
 
-                  <Text style={styles.detalhesDestacado}>
-                    Custo médio: {destino.custo_medio}
-                  </Text>
+                  <Pressable style={styles.botaoExcluir}
+                    onPress={() => confirmarExclusao(destino)}
+                    disabled={excluindoId === destino.id}>
+                    <Text style={styles.botaoExcluirTexto}>{excluindoId === destino.id ? "..." : "Excluir"} </Text>
+                  </Pressable>
+
                 </View>
               </View>
             ))}
@@ -101,6 +138,7 @@ const styles = StyleSheet.create({
 
   card: {
     flexDirection: "row",
+    alignItems: "center",
     padding: 8,
     marginVertical: 8,
     backgroundColor: "#fff",
@@ -125,8 +163,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 
-  info: {
+  containerInfo: {
     flex: 1,
+  },
+
+  info: {
     justifyContent: "center",
     padding: 8,
     gap: 6,
@@ -143,9 +184,18 @@ const styles = StyleSheet.create({
     color: "#64748b",
   },
 
-  detalhesDestacado: {
-    fontSize: 14,
+  botaoExcluir: {
+    alignSelf: "flex-start",
+    backgroundColor: "#cc3a3a",
+    paddingHorizontal: 17,
+    paddingVertical: 8,
+    borderRadius: 12,
+    marginTop: 5,
+  },
+
+  botaoExcluirTexto: {
+    color: "#fff",
     fontWeight: "700",
-    color: "#579E98",
+    fontSize: 13,
   },
 });

@@ -15,7 +15,7 @@ export default function SobreScreen() {
                 contentContainerStyle={styles.container}>
 
                 <Header eyebrow="Sobre mim"
-                    title="Conheça mais sobre mim "
+                    title="Conheça mais sobre mim 🩵"
                     description="Um pouco sobre quem eu sou, o que gosto de fazer e o que venho aprendendo" />
 
                 <View style={styles.cardPerfil}>

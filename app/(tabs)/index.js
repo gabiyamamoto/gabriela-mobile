@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
+    main: {
+    padding: 5,
+  },
+
   hero: {
     padding: 24,
     gap: 10,
