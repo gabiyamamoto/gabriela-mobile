@@ -37,7 +37,7 @@ export default function HomeScreen() {
           description="Desenvolvimento de aplicações, interfaces e experiencias digitais"
         />
 
-        <Link href="/sobre" asChild>
+        <Link href="/modal" asChild>
           <Pressable style={styles.botao}>
             <Text style={styles.botaoTexto}>Conheça mais sobre mim</Text>
           </Pressable>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-    main: {
+  main: {
     padding: 5,
   },
 

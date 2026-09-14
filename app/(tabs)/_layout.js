@@ -26,21 +26,6 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="sobre"
-        options={{
-          title: "Sobre",
-          headerTitle: "Sobre",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="person-outline"
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
         name="destinos-listar"
         options={{
           title: "GET",
@@ -78,6 +63,21 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="trash-outline"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="destinos-atualizar"
+        options={{
+          title: "PUT",
+          headerTitle: "Conteúdo - Put",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="create-outline"
               size={size}
               color={color}
             />
