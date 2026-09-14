@@ -16,7 +16,7 @@ export default function Card({ title, description, icon, variant = "white" }) {
       </Text>
 
       <Text style={styles.descricao}>
-        {title}
+        {description}
       </Text>
     </View>
   )
