@@ -4,7 +4,7 @@ import axios from "axios" // lib usada pra fazer chamadas HTTP para API
 import { SafeAreaView } from "react-native-safe-area-context" // evita que conteudo fique embaixo do notch/barra do celular
 import Header from "../components/header";
 
-const API_KEY = "cv_Hl8dpaXYosNehGc9ZMhLg-MnSia5QreHaY_In1KWxcPbUMNurusmFg4gt4V4W3HP";
+const API_KEY = "cv_a7ob2MtNVS37zs56r8dQHolpimNv_KYPNZSKM8brd_nmUwCN5lPOtUrXDdqEldtD";
 
 const api = axios.create({
   baseURL: "https://api-ds.codeverse.dev.br",

@@ -16,7 +16,7 @@ import Header from "../components/header";
 // Em produção, uma chave de API não deveria morar direto no código do
 // app (dá pra extrair de qualquer APK/IPA instalado). Aqui, como é uma
 // API pública de estudo, deixamos direto no código pra simplificar.
-const API_KEY = "cv_Hl8dpaXYosNehGc9ZMhLg-MnSia5QreHaY_In1KWxcPbUMNurusmFg4gt4V4W3HP";
+const API_KEY = "cv_a7ob2MtNVS37zs56r8dQHolpimNv_KYPNZSKM8brd_nmUwCN5lPOtUrXDdqEldtD";
 
 // Mesma instância do axios usada nas outras telas, com o header já
 // configurado — toda chamada feita com "api" já sai autenticada.
