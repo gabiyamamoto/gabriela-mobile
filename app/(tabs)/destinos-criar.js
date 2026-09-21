@@ -1,4 +1,3 @@
-```jsx
 import { useState } from "react";
 import {
   View,
@@ -15,7 +14,6 @@ import Header from "../components/header";
 
 const API_KEY = "cv_Ac_ie9fa2G-6etxbgpwOjAzKOjUcZexISWVWYlRIUNtonXqKphnyb-Er6xTr_j2y";
 
-// Cria uma configuração do axios que já fica com a URL e a chave da API
 const api = axios.create({
   baseURL: "https://api-ds.codeverse.dev.br",
   headers: {
@@ -24,7 +22,6 @@ const api = axios.create({
 });
 
 export default function DestinosCriarScreen() {
-  // Cada estado guarda o valor digitado em um dos campos
   const [titulo, setTitulo] = useState("");
   const [imagemUrl, setImagemUrl] = useState("");
   const [pais, setPais] = useState("");
@@ -35,7 +32,6 @@ export default function DestinosCriarScreen() {
   const [enviando, setEnviando] = useState(false);
 
   async function criarDestino() {
-    // Tira espaços desnecessários do começo e do final
     const tituloAparado = titulo.trim();
 
     if (tituloAparado.length < 3 || tituloAparado.length > 120) {
@@ -53,7 +49,6 @@ export default function DestinosCriarScreen() {
 
     const imagemUrlAparada = imagemUrl.trim();
 
-    // Só verifica a URL se o usuário tiver preenchido esse campo
     if (imagemUrlAparada) {
       try {
         new URL(imagemUrlAparada);
@@ -72,7 +67,6 @@ export default function DestinosCriarScreen() {
       return;
     }
 
-    // Transforma o valor digitado em texto para número
     const custoMedioNumero = Number(custoMedio.replace(",", "."));
 
     if (isNaN(custoMedioNumero)) {
@@ -84,7 +78,6 @@ export default function DestinosCriarScreen() {
     setEnviando(true);
 
     try {
-      // Envia os dados preenchidos para a API usando POST
       const resposta = await api.post("/api/destinos", {
         title: tituloAparado,
         imageUrl: imagemUrlAparada || null,
@@ -95,8 +88,6 @@ export default function DestinosCriarScreen() {
       });
 
       Alert.alert("Destino criado!", resposta.data.title);
-
-      // Limpa os campos depois que o destino foi criado
       setTitulo("");
       setImagemUrl("");
       setPais("");
@@ -109,7 +100,6 @@ export default function DestinosCriarScreen() {
         "A API respondeu com erro. Confere se todos os campos estão certinhos e tenta de novo."
       );
     } finally {
-      // Volta o botão para o estado normal, dê certo ou dê erro
       setEnviando(false);
     }
   }
@@ -183,6 +173,7 @@ export default function DestinosCriarScreen() {
             )}
           </View>
 
+
           <Text style={styles.rotulo}>Melhor época</Text>
 
           <TextInput
@@ -192,6 +183,7 @@ export default function DestinosCriarScreen() {
             placeholder="Ex: Verão"
             placeholderTextColor="#9AABAA"
           />
+
 
           <Text style={styles.rotulo}>Custo médio</Text>
 
@@ -315,4 +307,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-```
