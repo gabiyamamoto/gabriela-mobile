@@ -13,13 +13,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 import Header from "../components/header";
 
-// Em produção, uma chave de API não deveria morar direto no código do
-// app (dá pra extrair de qualquer APK/IPA instalado). Aqui, como é uma
-// API pública de estudo, deixamos direto no código pra simplificar.
 const API_KEY = "cv_a7ob2MtNVS37zs56r8dQHolpimNv_KYPNZSKM8brd_nmUwCN5lPOtUrXDdqEldtD";
 
-// Mesma instância do axios usada nas outras telas, com o header já
-// configurado — toda chamada feita com "api" já sai autenticada.
 const api = axios.create({
     baseURL: "https://api-ds.codeverse.dev.br",
     headers: {
