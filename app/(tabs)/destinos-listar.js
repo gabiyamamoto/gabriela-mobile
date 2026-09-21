@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react"
-import { View, Text, Image, ActivityIndicator, ScrollView, StyleSheet, TextInput, Pressable, Keyboard } from "react-native"
+import { useState, useCallback } from "react";
+import { useFocusEffect } from "expo-router";
+import { View, Text, Image, ActivityIndicator, ScrollView, StyleSheet, TextInput, Pressable, Keyboard } from "react-native";
 import axios from "axios" // lib usada pra fazer chamadas HTTP para API
-import { SafeAreaView } from "react-native-safe-area-context" // evita que conteudo fique embaixo do notch/barra do celular
+import { SafeAreaView } from "react-native-safe-area-context"; // evita que conteudo fique embaixo do notch/barra do celular
 import Header from "../components/header";
 
 // Em produção, uma chave de API não deveria morar direto no código do
 // app (dá pra extrair de qualquer APK/IPA instalado). Aqui, como é uma
 // API pública de estudo, deixamos direto no código pra simplificar.
-const API_KEY = "cv_a7ob2MtNVS37zs56r8dQHolpimNv_KYPNZSKM8brd_nmUwCN5lPOtUrXDdqEldtD";
+const API_KEY = "cv_Ac_ie9fa2G-6etxbgpwOjAzKOjUcZexISWVWYlRIUNtonXqKphnyb-Er6xTr_j2y";
 
 // header já configurado — toda chamada feita com "api" já sai autenticada.
 const api = axios.create({
@@ -72,9 +73,11 @@ export default function DestinosListarScreen() {
     }
   }
 
-  useEffect(() => {
-    buscarDestinos()
-  }, [])
+  useFocusEffect(
+    useCallback(() => {
+      buscarDestinos()
+    }, [])
+  )
 
   return (
     <SafeAreaView style={styles.safeArea}>
